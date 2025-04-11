@@ -1,27 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './ProductList.css'
-import {addItem} from './CreatSlice'
+import {addItem} from './CartSlice'
 import CartItem from './CartItem';
 
-function ProductList() {
-
-    const dispatch = useDispatch()
-
-    const cart = useSelector(state => state.cart.items);
-    const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
-
+function ProductList({ onHomeClick }) {
+    const [showCart, setShowCart] = useState(false);
+    const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
     
-    const [addToCart, setAddedToCart] = useState({})
-  
-    useEffect(() => {
 
-        const initialAddedToCart = {};
-        cart.forEach(item => {
-          initialAddedToCart[item.name] = true; // Assuming item.name is unique identifier
-        });
-        setAddedToCart(initialAddedToCart);
-    }, [cart])
+        const dispatch = useDispatch()
+    
+        const cart = useSelector(state => state.cart.items);
+        const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
+    
+        
+        const [addToCart, setAddedToCart] = useState({})
+      
+        useEffect(() => {
+    
+            const initialAddedToCart = {};
+            cart.forEach(item => {
+              initialAddedToCart[item.name] = true; // Assuming item.name is unique identifier
+            });
+            setAddedToCart(initialAddedToCart);
+        }, [cart])    
 
     const plantsArray = [
         {
