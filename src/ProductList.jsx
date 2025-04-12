@@ -242,23 +242,23 @@ function ProductList({ onHomeClick }) {
         textDecoration: 'none',
     }
 
-    const handleHomeClick = (e) => {
-        e.preventDefault();
+    const handleHomeClick = () => {
+        
         onHomeClick();
     };
 
-    const handleCartClick = (e) => {
-        e.preventDefault();
+    const handleCartClick = () => {
+        
         setShowCart(true); // Set showCart to true when cart icon is clicked
     };
-    const handlePlantsClick = (e) => {
-        e.preventDefault();
+    const handlePlantsClick = () => {
+        
         setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
         setShowCart(false); // Hide the cart when navigating to About Us
     };
 
-    const handleContinueShopping = (e) => {
-        e.preventDefault();
+    const handleContinueShopping = () => {
+        
         setShowCart(false);
     };
 
